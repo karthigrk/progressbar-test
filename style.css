@@ -1,0 +1,23 @@
+.appContent {
+    background-color: lightgrey;
+}
+.appBodyContent {
+    margin: 20px;
+    padding: 20px;
+}
+.pbContainer {
+    width: 50%;
+    margin: 0px auto
+}
+#pbBars {
+    text-align: center;
+    border: 2px solid black;
+    padding: 15px;
+    margin: 10px 0px;
+}
+.progress {
+    height: 35px;
+}
+.btnMargin {
+    margin: 0px 10px;
+}
