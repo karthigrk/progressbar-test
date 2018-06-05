@@ -11,13 +11,27 @@ function calculatePercentage(input) {
     return res;
 }
 
-function generatePB(barPercent) {
+function generateBootstrapPB(barPercent) {
     var Elem = document.createElement("div");
     barPercent = (barPercent < 0)? 0 : barPercent;
     if(barPercent > 100) {
         Elem.setAttribute("class","progress-bar bg-danger");
     } else {
         Elem.setAttribute("class","progress-bar");
+    }
+    Elem.setAttribute("data-percent-value",barPercent);
+    Elem.setAttribute("style","width:"+barPercent+"%");
+    Elem.innerHTML = barPercent + "%";
+    return Elem;
+}
+
+function generateJavascriptPB(barPercent) {
+    var Elem = document.createElement("div");
+    barPercent = (barPercent < 0)? 0 : barPercent;
+    if(barPercent > 100) {
+        Elem.setAttribute("class","myBar bgDanger");
+    } else {
+        Elem.setAttribute("class","myBar");
     }
     Elem.setAttribute("data-percent-value",barPercent);
     Elem.setAttribute("style","width:"+barPercent+"%");
@@ -32,7 +46,8 @@ function createProgresBarContent(bars) {
         var pDivElem = document.createElement("div");
         pDivElem.setAttribute("class","progress");
         pDivElem.setAttribute("id","progressbar_"+b);
-        var pbElem = generatePB(percentValue);
+        // var pbElem = generateBootstrapPB(percentValue);
+        var pbElem = generateJavascriptPB(percentValue);
         pDivElem.appendChild(pbElem);
         destinationDiv.appendChild(pDivElem);
         var brElem = document.createElement("br");
@@ -88,7 +103,9 @@ function updateProgressBar(progressPercent) {
 
         destinationDiv.innerHTML = "";
         var updatedProgressPercent = parseInt(prevPercent) + parseInt(progressPercent);
-        var pbElem = generatePB(updatedProgressPercent);
+        
+        // var pbElem = generateBootstrapPB(updatedProgressPercent);
+        var pbElem = generateJavascriptPB(updatedProgressPercent);
         destinationDiv.appendChild(pbElem);
     }
 }
